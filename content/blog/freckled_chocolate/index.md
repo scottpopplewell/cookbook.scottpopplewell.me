@@ -1,9 +1,9 @@
 ---
 title: Freckled Chocolate 
 date: "2021-10-30T19:19:12+00:00"
+description: A chocolate ice cream with specks of chocolate
+size: Makes about 2 pints
 ---
-*Size*: Makes about 2 pints
-
 - 1.25 teaspoons of sea salt
 - 2 tablespoons of sugar
 - 5 oz of your favorite chocolate, chopped into pieces (divide into 3 oz and 2 oz)
