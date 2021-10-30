@@ -47,14 +47,14 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
+      <Seo title="All recipes" />
       <Bio />
       
       <input
               type="text"
               className="post-search"
               aria-label="Search"
-              placeholder="Type to filter posts..."
+              placeholder="Type to filter recipes..."
               onChange={handleInputChange}
           />
       
