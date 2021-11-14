@@ -2,7 +2,7 @@
 title: Butternut Squash Ravioli
 date: "2021-11-14"
 description: A rich delicious butternut squash ravioli with a brown butter sage sauce
-size: Makes about food for 4
+size: Makes food for about 4 people
 ---
 
 # Butternut Squash Ravioli
@@ -19,7 +19,7 @@ size: Makes about food for 4
 2. Place peeled and cubed squash and garlic on a rimmed cookie sheet lined with parchment paper. Drizzle with enough olive oil that all squash is lightly glistening, sprinkle with sea salt and pepper, toss. Roast at 400 degrees for about 50 minutes but set timer for 40 minutes, adding 10 sage leaves to pan for the last ten minutes of cooking.
 3. When squash is done cooking remove from oven. Allow to cool for a few minutes.
 4. Place all the ingredients on the sheet pan, 1/3 cup pine nuts, and 3/4 cup cheese in food processor and mix to a thick paste.
-5. Make pasta using the ["Pasta Base"](./pasta_base) recipe.
+5. Make pasta using the ["Pasta Base"](/pasta_base) recipe.
 6. Roll out pasta
 7. Make ravioli as big or as small as you like. We prefer bigger raviolis for this recipe.
 8. Cook ravioli for ~3 minutes — remove from water using a small strainer (allows for batch cooking)
