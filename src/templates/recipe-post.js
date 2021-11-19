@@ -6,15 +6,15 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
+  const post = data.contentfulRecipe
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={post.title}
+        description={post.description}
       />
       <article
         className="blog-post"
@@ -22,12 +22,12 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-          <p>{post.frontmatter.size}</p>
+          <h1 itemProp="headline">{post.title}</h1>
+          <p>{post.createdAt}</p>
+          <p>{post.size}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }}
           itemProp="articleBody"
         />
         <hr />
@@ -47,15 +47,15 @@ const BlogPostTemplate = ({ data, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={"/recipes/" + previous.id} rel="prev">
+                ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={"/recipes/" + next.id} rel="next">
+                {next.title} →
               </Link>
             )}
           </li>
@@ -68,7 +68,7 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
+  query RecipeBySlug(
     $id: String!
     $previousPostId: String
     $nextPostId: String
@@ -78,31 +78,40 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    contentfulRecipe(id: {eq: $id}) {
       id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        size
+      size
+      title
+      createdAt
+      description
+      body {
+        childMarkdownRemark {
+          html
+        }
       }
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
+    previous: contentfulRecipe(id: {eq: $previousPostId}) {
+      id
+      size
+      title
+      createdAt
+      description
+      body {
+        childMarkdownRemark {
+          html
+        }
       }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
+    next: contentfulRecipe(id: {eq: $nextPostId}) {
+      id
+      size
+      title
+      createdAt
+      description
+      body {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
