@@ -82,7 +82,7 @@ export const pageQuery = graphql`
       id
       size
       title
-      createdAt
+      createdAt(formatString: "MMMM DD, YYYY")
       description
       body {
         childMarkdownRemark {
