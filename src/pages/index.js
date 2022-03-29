@@ -26,7 +26,7 @@ const BlogIndex = ({ data, location }) => {
         return tag['name'];
       });
       return (
-        description.toLowerCase().includes(query.toLowerCase()) ||
+        (description && description.toLowerCase().includes(query.toLowerCase())) ||
         title.toLowerCase().includes(query.toLowerCase()) ||
         (tags &&
           tags
