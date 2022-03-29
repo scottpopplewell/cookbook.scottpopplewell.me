@@ -8,6 +8,7 @@ import Seo from "../components/seo"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.contentfulRecipe
   const siteTitle = data.site.siteMetadata?.title || `Title`
+  const comments = data.allContentfulRecipeComment.nodes
   const { previous, next } = data
 
   return (
@@ -30,6 +31,19 @@ const BlogPostTemplate = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }}
           itemProp="articleBody"
         />
+        <h3>History</h3>
+        <ul>
+          {comments.map(comment => {
+            const date = comment.date
+            const commentBody = comment.body.body
+
+            return (
+              <li>
+                <p>{date} - {commentBody}</p>
+              </li>
+            )
+          })}
+        </ul>     
         <hr />
         <footer>
           <Bio />
@@ -87,6 +101,18 @@ export const pageQuery = graphql`
       body {
         childMarkdownRemark {
           html
+        }
+      }
+    }
+    allContentfulRecipeComment(
+      filter: {recipe: {elemMatch: {id: {eq: $id}}}}
+      sort: {fields: date, order: ASC}
+    ) {
+      nodes {
+        id
+        date(formatString: "MMMM, YYYY")
+        body {
+          body
         }
       }
     }
